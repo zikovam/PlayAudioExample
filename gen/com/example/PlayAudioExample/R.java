@@ -22,21 +22,28 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int ic_mxd=0x7f020001;
+        public static final int ic_next=0x7f020002;
+        public static final int ic_pause=0x7f020003;
+        public static final int ic_play=0x7f020004;
+        public static final int ic_prev=0x7f020005;
+        public static final int ic_rpt=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000c;
+        public static final int action_settings=0x7f08000d;
         public static final int displayname=0x7f080000;
         public static final int duration=0x7f080002;
-        public static final int next=0x7f08000a;
-        public static final int play=0x7f080009;
-        public static final int prev=0x7f080008;
-        public static final int repeat=0x7f080007;
+        public static final int next=0x7f08000b;
+        public static final int play=0x7f08000a;
+        public static final int prev=0x7f080009;
+        public static final int repeat=0x7f080008;
         public static final int seekbar=0x7f080005;
         public static final int selectedfile=0x7f080004;
-        public static final int shuffle=0x7f08000b;
+        public static final int shuffle=0x7f08000c;
         public static final int time=0x7f080006;
         public static final int title=0x7f080001;
         public static final int tracks=0x7f080003;
+        public static final int ttime=0x7f080007;
     }
     public static final class layout {
         public static final int listitem=0x7f030000;

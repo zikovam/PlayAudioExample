@@ -29,6 +29,7 @@ public class PlayAudioExample extends ListActivity {
     private static final int STEP_VALUE = 4000;
     
     private TextView time = null;
+    private TextView ttime = null;
     private Random newrand;
     private ToggleButton repeat;
     private boolean rpt;
@@ -67,6 +68,7 @@ public class PlayAudioExample extends ListActivity {
     repeat = (ToggleButton)findViewById(R.id.repeat);
     Tracks = (TextView)findViewById(R.id.tracks);
     time = (TextView)findViewById(R.id.time);
+    ttime = (TextView)findViewById(R.id.ttime);
     selelctedFile = (TextView)findViewById(R.id.selectedfile);
     seekbar = (SeekBar)findViewById(R.id.seekbar);
     playButton = (ImageButton)findViewById(R.id.play);
@@ -147,7 +149,7 @@ public class PlayAudioExample extends ListActivity {
              
             selelctedFile.setText(file);
             seekbar.setProgress(0);
-                 
+            
             int temp_pos=pos+1;
             Tracks.setText(String.valueOf(temp_pos)+"/"+size_listSTR);
             
@@ -167,11 +169,19 @@ public class PlayAudioExample extends ListActivity {
             }
              
             seekbar.setMax(player.getDuration());
-            playButton.setImageResource(android.R.drawable.ic_media_pause);
+            playButton.setImageResource(R.drawable.ic_pause);
              
             updatePosition();
              
             isStarted = true;
+            int tmin = 0, tsec = 0; 
+            double total_time = player.getDuration()/1000.0;
+            tmin = (int) (total_time/60);
+            tsec = (int) (total_time - tmin*60);
+            if (tsec < 10)
+            	ttime.setText(String.valueOf(tmin)+".0"+String.valueOf(tsec));
+            else 
+            	ttime.setText(String.valueOf(tmin)+"."+String.valueOf(tsec));
     }
      
     private void stopPlay() {
@@ -263,14 +273,14 @@ public class PlayAudioExample extends ListActivity {
                                     {
                                             handler.removeCallbacks(updatePositionRunnable);
                                             player.pause();
-                                            playButton.setImageResource(android.R.drawable.ic_media_play);
+                                            playButton.setImageResource(R.drawable.ic_play);
                                     }
                                     else
                                     {
                                             if(isStarted)
                                             {
                                                     player.start();
-                                                    playButton.setImageResource(android.R.drawable.ic_media_pause);
+                                                    playButton.setImageResource(R.drawable.ic_pause);
                                                      
                                                     updatePosition();
                                             }
@@ -386,7 +396,7 @@ public class PlayAudioExample extends ListActivity {
                     if(isMoveingSeekBar)
                     {
                             player.seekTo(progress);
-                     
+                                                        
                             Log.i("OnSeekBarChangeListener","onProgressChanged");
                     }
             }
