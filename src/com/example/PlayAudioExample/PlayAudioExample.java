@@ -23,7 +23,9 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
- 
+ /** @author ZIKOVAM
+  * Объявление переменных.
+  */
 public class PlayAudioExample extends ListActivity {
     private static final int UPDATE_FREQUENCY = 1;
     private static final int STEP_VALUE = 4000;
@@ -32,9 +34,9 @@ public class PlayAudioExample extends ListActivity {
     private TextView ttime = null;
     private Random newrand;
     private ToggleButton repeat;
-    private boolean rpt;
+    private boolean rpt=false;
     private ToggleButton shuffle;
-    private boolean mxd;
+    private boolean mxd=false;
     private TextView Tracks = null;
     private MediaCursorAdapter mediaAdapter = null;
     private TextView selelctedFile = null;
@@ -75,6 +77,8 @@ public class PlayAudioExample extends ListActivity {
     prevButton = (ImageButton)findViewById(R.id.prev);
     nextButton = (ImageButton)findViewById(R.id.next);
     
+    /**Обработчик нажатия на кнопку Rpt.
+     */
     repeat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked) {
@@ -84,6 +88,8 @@ public class PlayAudioExample extends ListActivity {
             }
         }
     });
+   /**Обработчик нажатия на кнопку Mix.
+    */
     shuffle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked) {
@@ -93,14 +99,19 @@ public class PlayAudioExample extends ListActivity {
             }
         }
     });
-    
+    /**
+     * Выделение памяти под переменную player.
+     */
     player = new MediaPlayer();
      
     player.setOnCompletionListener(onCompletion);
     player.setOnErrorListener(onError);
     seekbar.setOnSeekBarChangeListener(seekBarChanged);
       
-    
+    /**
+     * Переменная в которую записываются все данные списка треков
+     * и его запись в Listitem.xml.
+     */
     Cursor cursor = getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
     
     size_list = cursor.getCount();
@@ -120,8 +131,13 @@ public class PlayAudioExample extends ListActivity {
 	size_listSTR = String.valueOf(size_list);   //number of element in list
     Tracks.setText(size_listSTR);
 }
- 
+ /**
+  * Проверка на переопределение.
+  */
 @Override
+/**
+ * Обработка клика по позиции в списке.
+ */
     protected void onListItemClick(ListView list, View view, int position, long id) {
             super.onListItemClick(list, view, position, id);
              
@@ -133,6 +149,9 @@ public class PlayAudioExample extends ListActivity {
     }
  
     @Override
+    /**
+     * Диструктор программы.
+     */
     protected void onDestroy() {
             super.onDestroy();
              
@@ -143,7 +162,11 @@ public class PlayAudioExample extends ListActivity {
  
             player = null;
     }
- 
+ /**
+  * Обработчик кнопки play.
+  * Получает информацию о адресе трека и воспроизводит трек по указанному адресу.
+  * @param file
+  */
     private void startPlay(String file) {
             Log.i("Selected: ", file);
              
@@ -183,7 +206,10 @@ public class PlayAudioExample extends ListActivity {
             else 
             	ttime.setText(String.valueOf(tmin)+"."+String.valueOf(tsec));
     }
-     
+    /**
+     * Останавливает трек.
+     * не используется в нашем коде,возможно Саше пригодится.
+     */
     private void stopPlay() {
             player.stop();
             player.reset();
@@ -193,7 +219,9 @@ public class PlayAudioExample extends ListActivity {
              
             isStarted = false;
     }
-         
+      /**
+       *   Отражает проиграное время трека положением ползунка и числовым значением.
+       */
     private void updatePosition(){
             handler.removeCallbacks(updatePositionRunnable);
              
@@ -209,7 +237,13 @@ public class PlayAudioExample extends ListActivity {
             
             handler.postDelayed(updatePositionRunnable, UPDATE_FREQUENCY);
     }
- 
+ /**
+  * Формирование информации о элементе в списке,
+  * так же считает время воспроизведения в милисикундах.
+  * Веделенное желтым не используется,не знаем почему.
+  * @author ZIKOVAM
+  *
+  */
     private class MediaCursorAdapter extends SimpleCursorAdapter{
  
             public MediaCursorAdapter(Context context, int layout, Cursor c) {
@@ -260,7 +294,9 @@ public class PlayAudioExample extends ListActivity {
                     return v;
             }
 }
-     
+     /**
+      * Обработчик нажатия на кнопки play,prev,next.
+      */
     private View.OnClickListener onButtonClick = new View.OnClickListener() {
              
             @Override
@@ -336,7 +372,9 @@ public class PlayAudioExample extends ListActivity {
                     }
             }
     };
-     
+     /**
+      * Обработчик окончания воспроизведения трека.
+      */
     private MediaPlayer.OnCompletionListener onCompletion = new MediaPlayer.OnCompletionListener() {
         
         @Override
@@ -370,7 +408,9 @@ public class PlayAudioExample extends ListActivity {
         }
     };
 
-     
+     /**
+      * Обработчик ошибок в работе программы.
+      */
     private MediaPlayer.OnErrorListener onError = new MediaPlayer.OnErrorListener() {
              
             @Override
@@ -379,7 +419,14 @@ public class PlayAudioExample extends ListActivity {
                     return false;
             }
     };
-     
+     /**
+      * Обработччик внешних воздействий на ползунок плеера,путем его перемещения 
+      * по пиксельному пространству,запрограмированного на выполнение различных пользовательских задачь устройства,чье величие 
+      * и некая межконинтинентальная балистическая ракета.Вот вот упадет на землю грешников, населенную ускоглазыми азиатами 
+      * чью ахринитительную толпень возгловляет Ким Чен Ир, тацующий Гангнамстайл.
+      * МЫ ВСЕ УМРЕМ.
+      * поставте пожалуйста автомат ^^
+      */
     private SeekBar.OnSeekBarChangeListener seekBarChanged = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
