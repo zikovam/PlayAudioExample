@@ -24,7 +24,7 @@ import android.widget.ToggleButton;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
  /** @author ZIKOVAM
-  * Объявление переменных.
+  * РћР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С….
   */
 public class PlayAudioExample extends ListActivity {
     private static final int UPDATE_FREQUENCY = 1;
@@ -77,7 +77,7 @@ public class PlayAudioExample extends ListActivity {
     prevButton = (ImageButton)findViewById(R.id.prev);
     nextButton = (ImageButton)findViewById(R.id.next);
     
-    /**Обработчик нажатия на кнопку Rpt.
+    /**РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ Rpt.
      */
     repeat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -88,7 +88,7 @@ public class PlayAudioExample extends ListActivity {
             }
         }
     });
-   /**Обработчик нажатия на кнопку Mix.
+   /**РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ Mix.
     */
     shuffle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -100,7 +100,7 @@ public class PlayAudioExample extends ListActivity {
         }
     });
     /**
-     * Выделение памяти под переменную player.
+     * Р’С‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РїРѕРґ РїРµСЂРµРјРµРЅРЅСѓСЋ player.
      */
     player = new MediaPlayer();
      
@@ -109,8 +109,8 @@ public class PlayAudioExample extends ListActivity {
     seekbar.setOnSeekBarChangeListener(seekBarChanged);
       
     /**
-     * Переменная в которую записываются все данные списка треков
-     * и его запись в Listitem.xml.
+     * РџРµСЂРµРјРµРЅРЅР°СЏ РІ РєРѕС‚РѕСЂСѓСЋ Р·Р°РїРёСЃС‹РІР°СЋС‚СЃСЏ РІСЃРµ РґР°РЅРЅС‹Рµ СЃРїРёСЃРєР° С‚СЂРµРєРѕРІ
+     * Рё РµРіРѕ Р·Р°РїРёСЃСЊ РІ Listitem.xml.
      */
     Cursor cursor = getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
     
@@ -132,11 +132,11 @@ public class PlayAudioExample extends ListActivity {
     Tracks.setText(size_listSTR);
 }
  /**
-  * Проверка на переопределение.
+  * РџСЂРѕРІРµСЂРєР° РЅР° РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ.
   */
 @Override
 /**
- * Обработка клика по позиции в списке.
+ * РћР±СЂР°Р±РѕС‚РєР° РєР»РёРєР° РїРѕ РїРѕР·РёС†РёРё РІ СЃРїРёСЃРєРµ.
  */
     protected void onListItemClick(ListView list, View view, int position, long id) {
             super.onListItemClick(list, view, position, id);
@@ -150,7 +150,7 @@ public class PlayAudioExample extends ListActivity {
  
     @Override
     /**
-     * Диструктор программы.
+     * Р”РёСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРѕРіСЂР°РјРјС‹.
      */
     protected void onDestroy() {
             super.onDestroy();
@@ -163,8 +163,8 @@ public class PlayAudioExample extends ListActivity {
             player = null;
     }
  /**
-  * Обработчик кнопки play.
-  * Получает информацию о адресе трека и воспроизводит трек по указанному адресу.
+  * РћР±СЂР°Р±РѕС‚С‡РёРє РєРЅРѕРїРєРё play.
+  * РџРѕР»СѓС‡Р°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ Р°РґСЂРµСЃРµ С‚СЂРµРєР° Рё РІРѕСЃРїСЂРѕРёР·РІРѕРґРёС‚ С‚СЂРµРє РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ Р°РґСЂРµСЃСѓ.
   * @param file
   */
     private void startPlay(String file) {
@@ -207,8 +207,8 @@ public class PlayAudioExample extends ListActivity {
             	ttime.setText(String.valueOf(tmin)+"."+String.valueOf(tsec));
     }
     /**
-     * Останавливает трек.
-     * не используется в нашем коде,возможно Саше пригодится.
+     * РћСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С‚СЂРµРє.
+     * РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РЅР°С€РµРј РєРѕРґРµ,РІРѕР·РјРѕР¶РЅРѕ РЎР°С€Рµ РїСЂРёРіРѕРґРёС‚СЃСЏ.
      */
     private void stopPlay() {
             player.stop();
@@ -220,7 +220,7 @@ public class PlayAudioExample extends ListActivity {
             isStarted = false;
     }
       /**
-       *   Отражает проиграное время трека положением ползунка и числовым значением.
+       *   РћС‚СЂР°Р¶Р°РµС‚ РїСЂРѕРёРіСЂР°РЅРѕРµ РІСЂРµРјСЏ С‚СЂРµРєР° РїРѕР»РѕР¶РµРЅРёРµРј РїРѕР»Р·СѓРЅРєР° Рё С‡РёСЃР»РѕРІС‹Рј Р·РЅР°С‡РµРЅРёРµРј.
        */
     private void updatePosition(){
             handler.removeCallbacks(updatePositionRunnable);
@@ -238,9 +238,9 @@ public class PlayAudioExample extends ListActivity {
             handler.postDelayed(updatePositionRunnable, UPDATE_FREQUENCY);
     }
  /**
-  * Формирование информации о элементе в списке,
-  * так же считает время воспроизведения в милисикундах.
-  * Веделенное желтым не используется,не знаем почему.
+  * Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЌР»РµРјРµРЅС‚Рµ РІ СЃРїРёСЃРєРµ,
+  * С‚Р°Рє Р¶Рµ СЃС‡РёС‚Р°РµС‚ РІСЂРµРјСЏ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ РІ РјРёР»РёСЃРёРєСѓРЅРґР°С….
+  * Р’РµРґРµР»РµРЅРЅРѕРµ Р¶РµР»С‚С‹Рј РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ,РЅРµ Р·РЅР°РµРј РїРѕС‡РµРјСѓ.
   * @author ZIKOVAM
   *
   */
@@ -295,7 +295,7 @@ public class PlayAudioExample extends ListActivity {
             }
 }
      /**
-      * Обработчик нажатия на кнопки play,prev,next.
+      * РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєРё play,prev,next.
       */
     private View.OnClickListener onButtonClick = new View.OnClickListener() {
              
@@ -373,7 +373,7 @@ public class PlayAudioExample extends ListActivity {
             }
     };
      /**
-      * Обработчик окончания воспроизведения трека.
+      * РћР±СЂР°Р±РѕС‚С‡РёРє РѕРєРѕРЅС‡Р°РЅРёСЏ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ С‚СЂРµРєР°.
       */
     private MediaPlayer.OnCompletionListener onCompletion = new MediaPlayer.OnCompletionListener() {
         
@@ -409,7 +409,7 @@ public class PlayAudioExample extends ListActivity {
     };
 
      /**
-      * Обработчик ошибок в работе программы.
+      * РћР±СЂР°Р±РѕС‚С‡РёРє РѕС€РёР±РѕРє РІ СЂР°Р±РѕС‚Рµ РїСЂРѕРіСЂР°РјРјС‹.
       */
     private MediaPlayer.OnErrorListener onError = new MediaPlayer.OnErrorListener() {
              
@@ -420,12 +420,12 @@ public class PlayAudioExample extends ListActivity {
             }
     };
      /**
-      * Обработччик внешних воздействий на ползунок плеера,путем его перемещения 
-      * по пиксельному пространству,запрограмированного на выполнение различных пользовательских задачь устройства,чье величие 
-      * и некая межконинтинентальная балистическая ракета.Вот вот упадет на землю грешников, населенную ускоглазыми азиатами 
-      * чью ахринитительную толпень возгловляет Ким Чен Ир, тацующий Гангнамстайл.
-      * МЫ ВСЕ УМРЕМ.
-      * поставте пожалуйста автомат ^^
+      * РћР±СЂР°Р±РѕС‚С‡С‡РёРє РІРЅРµС€РЅРёС… РІРѕР·РґРµР№СЃС‚РІРёР№ РЅР° РїРѕР»Р·СѓРЅРѕРє РїР»РµРµСЂР°,РїСѓС‚РµРј РµРіРѕ РїРµСЂРµРјРµС‰РµРЅРёСЏ 
+      * РїРѕ РїРёРєСЃРµР»СЊРЅРѕРјСѓ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІСѓ,Р·Р°РїСЂРѕРіСЂР°РјРёСЂРѕРІР°РЅРЅРѕРіРѕ РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ СЂР°Р·Р»РёС‡РЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… Р·Р°РґР°С‡СЊ СѓСЃС‚СЂРѕР№СЃС‚РІР°,С‡СЊРµ РІРµР»РёС‡РёРµ 
+      * Рё РЅРµРєР°СЏ РјРµР¶РєРѕРЅРёРЅС‚РёРЅРµРЅС‚Р°Р»СЊРЅР°СЏ Р±Р°Р»РёСЃС‚РёС‡РµСЃРєР°СЏ СЂР°РєРµС‚Р°.Р’РѕС‚ РІРѕС‚ СѓРїР°РґРµС‚ РЅР° Р·РµРјР»СЋ РіСЂРµС€РЅРёРєРѕРІ, РЅР°СЃРµР»РµРЅРЅСѓСЋ СѓСЃРєРѕРіР»Р°Р·С‹РјРё Р°Р·РёР°С‚Р°РјРё 
+      * С‡СЊСЋ Р°С…СЂРёРЅРёС‚РёС‚РµР»СЊРЅСѓСЋ С‚РѕР»РїРµРЅСЊ РІРѕР·РіР»РѕРІР»СЏРµС‚ РљРёРј Р§РµРЅ РСЂ, С‚Р°С†СѓСЋС‰РёР№ Р“Р°РЅРіРЅР°РјСЃС‚Р°Р№Р».
+      * РњР« Р’РЎР• РЈРњР Р•Рњ.
+      * РїРѕСЃС‚Р°РІС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р° Р°РІС‚РѕРјР°С‚ ^^
       */
     private SeekBar.OnSeekBarChangeListener seekBarChanged = new SeekBar.OnSeekBarChangeListener() {
             @Override
